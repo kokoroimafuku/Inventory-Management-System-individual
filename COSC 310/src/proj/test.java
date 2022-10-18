@@ -18,7 +18,7 @@ public class test {
 			case 1: 
 				System.out.println("enter product name: ");
 				String q = sc.next();
-				System.out.println("enter product expiration Date: ");
+				System.out.println("enter product expiration Date(YYYY-MM-DD): ");
 				String w = sc.next();
 				System.out.println("enter product quantity: ");
 				int e = sc.nextInt();
