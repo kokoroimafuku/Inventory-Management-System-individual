@@ -18,8 +18,8 @@ public class ProductList implements Serializable {
 	public ProductList(String filename) {
 		load(filename);
 	}
-	public void add(Product p) {
-		productList.add(p);
+	public void add(Product pr) {
+		productList.add(pr);
 	}
 	public void remove(String prod) {
 		boolean removed=false;
