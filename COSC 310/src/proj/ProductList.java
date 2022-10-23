@@ -18,14 +18,14 @@ public class ProductList implements Serializable {
 	public ProductList(String filename) {
 		load(filename);
 	}
-	public void add(Product pr) {
-		productList.add(pr);
+	public void add(Product prod) {
+		productList.add(prod);
 	}
-	public void remove(String prod) {
+	public void remove(String p) {
 		boolean removed=false;
 		for(int i=0;i<length();i++)
 		{
-			if(productList.get(i).getName().equals(prod)) {
+			if(productList.get(i).getName().equals(p)) {
 				productList.remove(i);
 				removed=true;
 				}
