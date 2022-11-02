@@ -35,6 +35,20 @@ public class ProductList implements Serializable {
 			System.out.println("Product does not exist");
 		}
 	}
+	public void modifyQuant(String nn, int pp) {
+		boolean removed=false;
+		for(int i=0;i<length();i++)
+		{
+			if(productList.get(i).getName().equals(nn)) {
+				productList.get(i).setQuant(pp);
+				removed=true;
+				}
+		}
+		if(!removed)
+		{
+			System.out.println("Product does not exist");
+		}
+	}
 	public int length() {
 		return productList.size();
 	}
@@ -76,4 +90,18 @@ public class ProductList implements Serializable {
 					e.printStackTrace();
 				}
 	}
+	public String lowInventory() {
+		String low="";
+		boolean notLow=true;
+		for(int i=0;i<length();i++)
+			if(productList.get(i).isLow())
+				{low+=productList.get(i)+"\n";
+				notLow=false;
+				}
+		if(notLow)
+			System.out.println("No product is below the prescribed quantity threshold");
+		return low;
+	}
+
+
 }

@@ -13,17 +13,19 @@ public class test {
 			System.out.println("Would you like to add an item? (1)");
 			System.out.println("Would you like to remove an item? (2)");
 			System.out.println("Would you like to see the inventory? (3)");
+			System.out.println("Would you like the check if any of your inventory is low? (4)");
+			System.out.println("Would you like to remove specific amount from an items quantity (5)");
 			int t = sc.nextInt();
 		switch(t){
 			case 1: 
 				System.out.println("enter product name: ");
 				String q = sc.next();
-				System.out.println("enter product expiration Date(YYYY-MM-DD): ");
+				System.out.println("enter product expiration Date: ");
 				String w = sc.next();
 				System.out.println("enter product quantity: ");
 				int e = sc.nextInt();
 				System.out.println("enter product Value (After tax): ");
-				int r = sc.nextInt();
+				double r = sc.nextDouble();
 				Product p1 = new Product(q, w, e, r);
 				arr.add(p1);
 				System.out.println("Succesfully added item: "+p1);
@@ -36,6 +38,14 @@ public class test {
 			case 3:
 				System.out.println(arr);
 				break;		
+			case 4:
+				System.out.println(arr.lowInventory());
+				break;		
+			case 5:
+				System.out.println("Enter the name and quantity");
+				String d = sc.next();
+				arr.modifyQuant(d,sc.nextInt());
+				break;
 		}
 		System.out.println("Would you like to perform another action? (Y/N) ");
 		String yesNo = sc.next();

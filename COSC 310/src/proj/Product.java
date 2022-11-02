@@ -10,10 +10,11 @@ public class Product implements Serializable{
 	 String expDate; //Changed date to string value,later improve with string patterns to check correct dates
 	 int quant;
 	 double value;
+	 boolean low;
 
 	/*static ArrayList<String> inv = new ArrayList<>();
 	static ArrayList<String> inv1 = new ArrayList<>();*/
-	Product(String name, String expDate, int quant, int value) {
+	Product(String name, String expDate, int quant, double value) {
 		this.name = name;
 		this.expDate = expDate;
 		this.quant = quant;
@@ -33,6 +34,13 @@ public class Product implements Serializable{
 
 	public String getExpDate() {
 		return expDate;
+	}
+	public boolean isLow() {
+		
+		if(quant<100)
+			return true;
+		return false;
+		
 	}
 
 
