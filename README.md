@@ -14,13 +14,6 @@ The user can select specific inventory to generate an order to send out to produ
 4. Print the products that are currently in the invenotry
 5. Modify the quantity of products in the inventory
 6. Print the products that are running low
-# HOW TO COMPILE AND RUN THE PROGRAM
-1. Clone the repository to your computer
-2. Import the files in the repository as a project in you IDE that supports java preferebly VS CODE/eclipse
-3. Open the COSC 310 Folder
-4. Open the src folder
-5. Open the proj folder
-6. Run the java files in the proj folder. The program should execute
 
 # Setting up the database
 1. Download docker desktop
@@ -34,3 +27,13 @@ The user can select specific inventory to generate an order to send out to produ
 7. Enter password(The password is in the docker-compose.yml file)
 If successful
 Open VS code and create a connection to the database using the username and password from the docker-compose.yml file
+
+# HOW TO COMPILE AND RUN THE PROGRAM
+1. Clone the repository to your computer
+2. Import the files in the repository as a project in you IDE that supports java preferebly VS CODE/eclipse
+3. Open the COSC 310 Folder
+4. Open the src folder
+5. Open the proj folder
+6. Run the java files in the proj folder. The program should execute
+
+
