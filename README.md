@@ -22,7 +22,7 @@ The user can select specific inventory to generate an order to send out to produ
 5. Open the proj folder
 6. Run the java files in the proj folder. The program should execute
 
-#Setting up the database
+# Setting up the database
 1. Download docker desktop
 2. Download visual studio code
 3. Open your terminal and navigate it to the COSC 310 folder in you local repository of the project
