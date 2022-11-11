@@ -7,11 +7,15 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.UIManager;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Login extends JFrame {
 
@@ -71,6 +75,30 @@ public class Login extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("LogIn");
+		btnNewButton.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent e) {
+				
+				if(textField.getText().toString().equals("team22")){
+					char[] password=passwordField.getPassword();
+					String password1="";
+					for(int i=0;i<password.length;i++)
+							password1+=password[i];
+					if(password1.equals("310pw"))
+						Options.main(null);
+					else
+					 	JOptionPane.showMessageDialog(null, "Enter valid password", "Incorrect Password", JOptionPane.ERROR_MESSAGE);
+				}
+				else
+				JOptionPane.showMessageDialog(null, "Enter valid username", "Incorrect username", JOptionPane.ERROR_MESSAGE);
+						
+						
+						
+						
+					
+				
+			}
+		});
 		btnNewButton.setBounds(162, 205, 117, 29);
 		contentPane.add(btnNewButton);
 		
@@ -78,4 +106,5 @@ public class Login extends JFrame {
 		passwordField.setBounds(162, 97, 140, 26);
 		contentPane.add(passwordField);
 	}
+	
 }

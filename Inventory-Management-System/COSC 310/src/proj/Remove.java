@@ -7,13 +7,16 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.UIManager;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JFormattedTextField;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import javax.swing.JButton;
 
 public class Remove extends JFrame {
-	public static String remIt;
+	private String remIt;
 	private JPanel contentPane;
 
 	/**
@@ -58,13 +61,36 @@ public class Remove extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		JFormattedTextField formattedTextField = new JFormattedTextField();
-		formattedTextField.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				remIt = formattedTextField.getText();
-			}
-		});
 		formattedTextField.setBounds(119, 54, 122, 26);
 		contentPane.add(formattedTextField);
+		
+		JButton btnNewButton = new JButton("Remove");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				db app =new db();
+				remIt = formattedTextField.getText();
+				try {
+					app.connect();
+					app.removeProduct(remIt);
+					JOptionPane.showMessageDialog(null,"Successful");
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		btnNewButton.setBounds(30, 129, 117, 29);
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Home");
+		btnNewButton_1.setBounds(257, 129, 117, 29);
+		contentPane.add(btnNewButton_1);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Options.main(null);
+				
+			}
+		});
 	}
-
 }

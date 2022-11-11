@@ -1,6 +1,7 @@
 package proj;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class db {
     private Connection con;
@@ -40,7 +41,7 @@ public class db {
 		}
 	}
 	/**
-	 * Adds a product to the product table in the inventorySystem databse
+	 * Adds a product to the product table in the inventorySystem database
 	 * @param p
 	 * Takes a product object as an argument
 	 */
@@ -171,24 +172,36 @@ public class db {
 	 * 			Format
 	 * productName,Expiry Date, Quantity, Value
 	 */
-	public String listProducts(){
-		StringBuilder products = new StringBuilder();
+	public Object[][] listProducts(){
+		Object[][] data= new Object[1000][4];
+		int count=0;
+		
 		try{
 			String sql="SELECT * FROM product";
 			Statement stmt= con.createStatement();
 			ResultSet rst = stmt.executeQuery(sql);
 			System.out.println("Product Name,	Expiry Date,	Quantity,	Value");
+			
 			while(rst.next()){
-				products.append(rst.getString("productName")+",	"+rst.getDate("expiryDate")+",	"+rst.getInt("quantity")+",	"+rst.getDouble("productValue")+"\n");
-			}
 				
+				data[count][0]=rst.getString("productName");
+				data[count][1]=rst.getDate("expiryDate");
+				data[count][2]=rst.getInt("quantity");
+				data[count][3]=rst.getDouble("productValue");
+				count++;
+			}
+		
 			stmt.close();
 			
 		}
 		catch(Exception e){
 			System.out.println(e);
 		}
-		return products.toString();
+		Object result[][]= new Object[count][4];
+		for(int i=0;i<count;i++)
+			for(int j =0;j<4;j++)
+				result[i][j]=data[i][j];
+		return data;
 	}
 	/**
 	 * Returns a list of products low in quanitity in the database
@@ -197,15 +210,20 @@ public class db {
 	 * 			Format
 	 * productName,Expiry Date, Quantity, Value
 	 */
-	public String listLowInventryProducts(){
-		StringBuilder products = new StringBuilder();
+	public Object[][] listLowInventryProducts(){
+		Object[][] data= new Object[1000][4];
 		try{
 			String sql="SELECT * FROM product WHERE quantity<100";
 			Statement stmt= con.createStatement();
 			ResultSet rst = stmt.executeQuery(sql);
 			System.out.println("Product Name,	Expiry Date,	Quantity,	Value");
+			int count=0;
 			while(rst.next()){
-				products.append(rst.getString("productName")+",	"+rst.getDate("expiryDate")+",	"+rst.getInt("quantity")+",	"+rst.getDouble("productValue")+"\n");
+				data[count][0]=rst.getString("productName");
+				data[count][1]=rst.getDate("expiryDate");
+				data[count][2]=rst.getInt("quantity");
+				data[count][3]=rst.getDouble("productValue");
+				count++;
 			}
 				
 			stmt.close();
@@ -214,7 +232,7 @@ public class db {
 		catch(Exception e){
 			System.out.println(e);
 		}
-		return products.toString();
+		return data;
 
 	}
 	/**

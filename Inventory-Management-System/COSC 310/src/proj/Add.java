@@ -7,11 +7,15 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.UIManager;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JFormattedTextField;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import javax.swing.JButton;
 
 public class Add extends JFrame {
 
@@ -20,6 +24,7 @@ public class Add extends JFrame {
 	public static int r = 0;
 	public static double t = 0.0;
 	private JPanel contentPane;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -78,44 +83,61 @@ public class Add extends JFrame {
 		contentPane.add(lblNewLabel_4);
 		
 		JFormattedTextField formattedTextField = new JFormattedTextField();
-		formattedTextField.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				 q = formattedTextField.getText();
-			}
-		});
 		formattedTextField.setBounds(126, 52, 155, 26);
 		contentPane.add(formattedTextField);
 		
 		JFormattedTextField formattedTextField_1 = new JFormattedTextField();
-		formattedTextField_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String w = formattedTextField_1.getText();
-
-			}
-		});
 		formattedTextField_1.setBounds(126, 80, 155, 26);
 		contentPane.add(formattedTextField_1);
 		
 		JFormattedTextField formattedTextField_2 = new JFormattedTextField();
-		formattedTextField_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String g = formattedTextField_2.getText();
-				r = Integer.parseInt(g);
-			}
-		});
 		formattedTextField_2.setBounds(129, 108, 152, 26);
 		contentPane.add(formattedTextField_2);
 		
 		JFormattedTextField formattedTextField_3 = new JFormattedTextField();
-		formattedTextField_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String h = formattedTextField_3.getText();
-				 t = Double.parseDouble(h);
-			}
-		});
 		formattedTextField_3.setToolTipText("");
 		formattedTextField_3.setBounds(126, 136, 155, 26);
 		contentPane.add(formattedTextField_3);
+		
+		JButton btnNewButton = new JButton("Add");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				db app =new db();
+				try {
+					q = formattedTextField.getText();
+					w = formattedTextField_1.getText();
+					String g = formattedTextField_2.getText();
+					r = Integer.parseInt(g);
+					String h = formattedTextField_3.getText();
+					t = Double.parseDouble(h);
+					
+					app.connect();
+					app.addProduct(new Product(q,w,r,t));
+					JOptionPane.showMessageDialog(null,"Successful");
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		btnNewButton.setBounds(59, 199, 117, 29);
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Home");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Options.main(null);
+			}
+		});
+		btnNewButton_1.setBounds(244, 199, 117, 29);
+		contentPane.add(btnNewButton_1);
+		
+		textField = new JTextField();
+		textField.setBounds(314, 52, 130, 26);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		textField.setText(q);
 		
 	}
 }
