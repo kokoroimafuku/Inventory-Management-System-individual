@@ -90,9 +90,12 @@ public class removeQuant extends JFrame {
 					w = Integer.parseInt(r);
 					app.modifyQuantity(q, w);
 					JOptionPane.showMessageDialog(null,"Successful");
+					textField.setText("");
+					textField_1.setText("");
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					textField.setText("");
+					textField_1.setText("");
+					JOptionPane.showMessageDialog(null, "Enter product name and quantity again", "no such record/incorrect quantity type", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});

@@ -114,9 +114,16 @@ public class Add extends JFrame {
 					app.connect();
 					app.addProduct(new Product(q,w,r,t));
 					JOptionPane.showMessageDialog(null,"Successful");
+					formattedTextField.setText("");
+					formattedTextField_1.setText("");
+					formattedTextField_2.setText("");
+					formattedTextField_3.setText("");
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					formattedTextField.setText("");
+					formattedTextField_1.setText("");
+					formattedTextField_2.setText("");
+					formattedTextField_3.setText("");
+					JOptionPane.showMessageDialog(null, "Enter product details again", "Incorrect Types", JOptionPane.ERROR_MESSAGE);
 				}
 				
 			}

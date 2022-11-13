@@ -8,6 +8,12 @@ public class Supplier {
 	private String product;
 	
 	
+	public Supplier(String supplierName, String supplierEmail, String product) {
+		super();
+		this.supplierName = supplierName;
+		this.supplierEmail = supplierEmail;
+		this.product = product;
+	}
 	public String getSupplierName() {
 		return supplierName;
 	}

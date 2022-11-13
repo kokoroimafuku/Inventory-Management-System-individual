@@ -2,5 +2,6 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="COSC 310/src"/>
+	<classpathentry kind="src" path="Inventory-Management-System/COSC 310/src/proj"/>
 	<classpathentry kind="output" path="COSC 310/bin"/>
 </classpath>

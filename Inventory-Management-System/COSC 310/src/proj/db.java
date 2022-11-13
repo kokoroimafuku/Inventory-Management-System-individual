@@ -2,23 +2,37 @@ package proj;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.prefs.Preferences;
 
 public class db {
     private Connection con;
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");	
+	Preferences preferences = Preferences.userNodeForPackage(db.class);
+
+	public void setCredentials(String username, String password) {
+		    preferences.put("db_username", username);
+		    preferences.put("db_password", password);
+		  }
+
+	public String getUsername() {
+		    return preferences.get("db_username", null);
+		  }
+
+	public String getPassword() {
+		    return preferences.get("db_password", null);
+		  }
+	
 	/**
 	 * Creates a connection to the database
 	 * @return
 	 * the connection
 	 * @throws SQLException
 	 */
-
-
     public Connection connect() throws SQLException
 	{
 		String url = "jdbc:mysql://localhost/inventorySystem"; 
-		String uid = "team22";        
-		String pw = "310pw";
+		String uid = getUsername();        
+		String pw = getPassword();
 
 		System.out.println("Connecting to database.");
 		con = DriverManager.getConnection(url, uid, pw);
@@ -255,6 +269,51 @@ public class db {
 		catch(Exception e){
 			System.out.println(e);
 		}
+
+	}
+	public Object[][] ListUsers(){
+		Object[][] data= new Object[1000][2];
+		try{
+			String sql="SELECT * FROM user";
+			Statement stmt= con.createStatement();
+			ResultSet rst = stmt.executeQuery(sql);
+			int count=0;
+			while(rst.next()){
+				data[count][0]=rst.getString("username");
+				data[count][1]=rst.getString("email");
+				count++;
+			}
+				
+			stmt.close();
+			
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
+		return data;
+
+	}
+	public Object[][] listSuppliers(){
+		Object[][] data= new Object[1000][3];
+		try{
+			String sql="SELECT * FROM supplier";
+			Statement stmt= con.createStatement();
+			ResultSet rst = stmt.executeQuery(sql);
+			int count=0;
+			while(rst.next()){
+				data[count][0]=rst.getString("supplierName");
+				data[count][1]=rst.getString("supplierEmail");
+				data[count][2]=rst.getString("product");
+				count++;
+			}
+				
+			stmt.close();
+			
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
+		return data;
 
 	}
 			

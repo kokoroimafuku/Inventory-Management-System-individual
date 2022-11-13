@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class Look extends JFrame {
+	private JTable table;
 
 
 	/**
@@ -42,42 +43,30 @@ public class Look extends JFrame {
 	public Look() throws SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("INVENTORY");
+		getContentPane().setLayout(null);
+
 		String[] fields = {"Product Name","Expiry Date","Quantity","Value"};
 		db app = new db();
 		app.connect();
-		JTable table = new JTable(app.listProducts(),fields);
-		table.setBounds(100,100,450,300);
-		JScrollPane scrollpane = new JScrollPane(table);
-		this.add(scrollpane);
-		this.setSize(300,400);
+		table = new JTable(app.listProducts(),fields);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(6, 48, 428, 175);
+		getContentPane().add(scrollPane);
+		scrollPane.setViewportView(table);
+		
+		JButton btnNewButton = new JButton("Home");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Options.main(null);
+			}
+		});
+		btnNewButton.setBounds(137, 235, 117, 29);
+		getContentPane().add(btnNewButton);
+		this.setSize(440,296);
 		this.setVisible(true);
 
 		
-		/*setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setForeground(UIManager.getColor("Button.darkShadow"));
-		contentPane.setBackground(UIManager.getColor("Button.background"));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Inventory");
-		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setForeground(UIManager.getColor("Button.darkShadow"));
-		lblNewLabel.setBounds(145, 6, 126, 37);
-		contentPane.add(lblNewLabel);
-		
-		JButton btnNewButton = new JButton("Show Inventory");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		btnNewButton.setBounds(145, 88, 140, 29);
-		contentPane.add(btnNewButton);*/
 		
 	}
 }

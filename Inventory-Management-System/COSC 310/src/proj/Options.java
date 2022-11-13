@@ -49,7 +49,7 @@ public class Options extends JFrame {
 			}
 		});
 	
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Add");
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Add Product");
 		mnNewMenu.add(mntmNewMenuItem_1);
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -58,7 +58,7 @@ public class Options extends JFrame {
 		});
 		
 		
-		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Remove");
+		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Remove Product");
 		mntmNewMenuItem_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					Remove.main(null);
@@ -66,7 +66,7 @@ public class Options extends JFrame {
 		});
 		mnNewMenu.add(mntmNewMenuItem_3);
 		
-		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Inventory");
+		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Product Inventory");
 		mntmNewMenuItem_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					Look.main(null);
@@ -74,7 +74,7 @@ public class Options extends JFrame {
 		});
 		mnNewMenu.add(mntmNewMenuItem_4);
 		
-		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Low Stock Items");
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Product Low Stock Items");
 		mntmNewMenuItem_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					LowList.main(null);
@@ -82,13 +82,61 @@ public class Options extends JFrame {
 		});
 		mnNewMenu.add(mntmNewMenuItem_2);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Quantity Change");
+		JMenuItem mntmNewMenuItem = new JMenuItem("Product Quantity Change");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					removeQuant.main(null);
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem);
+		
+		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Add supplier");
+		mntmNewMenuItem_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					addSupplier.main(null);
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_6);
+		
+		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Add user");
+		mntmNewMenuItem_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					addUser.main(null);
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_7);
+		
+		JMenuItem mntmNewMenuItem_8= new JMenuItem("Delete supplier");
+		mntmNewMenuItem_8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					deleteSupplier.main(null);
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_8);
+		
+		JMenuItem mntmNewMenuItem_9 = new JMenuItem("Delete User");
+		mntmNewMenuItem_9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					deleteUser.main(null);
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_9);
+		
+		JMenuItem mntmNewMenuItem_10 = new JMenuItem("List suppliers");
+		mntmNewMenuItem_10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					ListSuppliers.main(null);
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_10);
+		
+		JMenuItem mntmNewMenuItem_11 = new JMenuItem("List Users");
+		mntmNewMenuItem_11.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					ListUsers.main(null);
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_11);
 		
 		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Close");
 		mntmNewMenuItem_5.addActionListener(new ActionListener() {
@@ -99,6 +147,7 @@ public class Options extends JFrame {
 		mnNewMenu.add(mntmNewMenuItem_5);
 		
 	}
+	
 	
 	
 

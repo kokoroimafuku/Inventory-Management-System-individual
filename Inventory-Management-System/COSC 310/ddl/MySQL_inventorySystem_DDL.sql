@@ -28,6 +28,7 @@ CREATE TABLE supplier (
 
  CREATE TABLE user(
     username varchar(50) NOT NULL,
+    email varchar(50),
     userPassword VARCHAR(50)
  ) ENGINE = InnoDB;
 

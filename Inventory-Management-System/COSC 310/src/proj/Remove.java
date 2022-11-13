@@ -73,9 +73,10 @@ public class Remove extends JFrame {
 					app.connect();
 					app.removeProduct(remIt);
 					JOptionPane.showMessageDialog(null,"Successful");
+					formattedTextField.setText("");
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					formattedTextField.setText("");
+					JOptionPane.showMessageDialog(null, "Enter product name again", "No such product", JOptionPane.ERROR_MESSAGE);
 				}
 				
 			}

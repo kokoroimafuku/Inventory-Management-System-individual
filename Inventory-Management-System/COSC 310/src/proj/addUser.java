@@ -5,23 +5,20 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.UIManager;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-import java.awt.Font;
-import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
-public class Login extends JFrame {
+public class addUser extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	private JTextField textField_1;
 	private JPasswordField passwordField;
 
 	/**
@@ -31,7 +28,7 @@ public class Login extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Login frame = new Login();
+					addUser frame = new addUser();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,65 +40,74 @@ public class Login extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Login() {
+	public addUser() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
-		contentPane.setBackground(UIManager.getColor("Button.darkShadow"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Name:");
-		lblNewLabel.setForeground(UIManager.getColor("Button.highlight"));
-		lblNewLabel.setBounds(83, 74, 61, 16);
+		JLabel lblNewLabel = new JLabel("Username");
+		lblNewLabel.setBounds(28, 72, 109, 16);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Password: ");
-		lblNewLabel_1.setForeground(UIManager.getColor("Button.highlight"));
-		lblNewLabel_1.setBounds(83, 102, 67, 16);
+		JLabel lblNewLabel_1 = new JLabel("email");
+		lblNewLabel_1.setBounds(28, 154, 61, 16);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Log In");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
-		lblNewLabel_2.setForeground(UIManager.getColor("Button.highlight"));
-		lblNewLabel_2.setBounds(136, 6, 166, 51);
-		contentPane.add(lblNewLabel_2);
-		
 		textField = new JTextField();
-		textField.setBounds(161, 69, 141, 26);
+		textField.setBounds(114, 67, 130, 26);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("LogIn");
+		textField_1 = new JTextField();
+		textField_1.setBounds(114, 149, 130, 26);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblNewLabel_2 = new JLabel("Password");
+		lblNewLabel_2.setBounds(28, 116, 61, 16);
+		contentPane.add(lblNewLabel_2);
+		
+		JButton btnNewButton = new JButton("Add");
 		btnNewButton.addActionListener(new ActionListener() {
-			
 			public void actionPerformed(ActionEvent e) {
 				db app = new db();
 				try {
+					app.connect();
 					char[] password=passwordField.getPassword();
 					String password1="";
 					for(int i=0;i<password.length;i++)
 							password1+=password[i];
-					app.setCredentials(textField.getText(), password1);
-					app.connect();
-					JOptionPane.showMessageDialog(null,"Successfull");
-					Options.main(null);
+					app.addUser(new User(textField.getText(),password1,textField_1.getText()));
+					JOptionPane.showMessageDialog(null, "Successfull");
+					textField.setText("");
+					textField_1.setText("");
+					passwordField.setText("");
 				} catch (SQLException e1) {
-					JOptionPane.showMessageDialog(null, "Enter valid valid credentials", "Incorrect Credentials", JOptionPane.ERROR_MESSAGE);
+					textField.setText("");
+					textField_1.setText("");
+					passwordField.setText("");
+					JOptionPane.showMessageDialog(null, "Enter User details again", "Incorrect Types", JOptionPane.ERROR_MESSAGE);
 				}
-									
-				
 			}
 		});
-		btnNewButton.setBounds(162, 205, 117, 29);
+		btnNewButton.setBounds(28, 216, 117, 29);
 		contentPane.add(btnNewButton);
 		
+		JButton btnNewButton_1 = new JButton("Home");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Options.main(null);
+			}
+		});
+		btnNewButton_1.setBounds(274, 216, 117, 29);
+		contentPane.add(btnNewButton_1);
+		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(162, 97, 140, 26);
+		passwordField.setBounds(114, 111, 130, 26);
 		contentPane.add(passwordField);
 	}
-	
 }

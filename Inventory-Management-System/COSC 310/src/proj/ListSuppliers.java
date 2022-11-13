@@ -4,21 +4,19 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.SwingConstants;
+import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextField;
+import javax.swing.JTable;
+import javax.swing.JLabel;
 
-public class LowList extends JFrame {
+public class ListSuppliers extends JFrame {
+
+	private JPanel contentPane;
 	private JTable table;
-
 
 	/**
 	 * Launch the application.
@@ -27,11 +25,8 @@ public class LowList extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Options frame1= new Options();
-					frame1.setVisible(true);
-					LowList frame = new LowList();
+					ListSuppliers frame = new ListSuppliers();
 					frame.setVisible(true);
-
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -43,20 +38,21 @@ public class LowList extends JFrame {
 	 * Create the frame.
 	 * @throws SQLException 
 	 */
-	public LowList() throws SQLException {
+	public ListSuppliers() throws SQLException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setTitle("LOW ON INVENTORY");
-		String[] fields = {"Product Name","Expiry Date","Quantity","Value"};
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		db app = new db();
 		app.connect();
-		this.setSize(720,400);
-		getContentPane().setLayout(null);
-		
+		String[] fields= {"Supplier Name","Supplier Email","Product"};
+		table = new JTable(app.listSuppliers(),fields);
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(6, 41, 708, 292);
-		getContentPane().add(scrollPane);
-		
-		table = new JTable(app.listLowInventryProducts(),fields);
+		scrollPane.setBounds(6, 39, 438, 184);
+		contentPane.add(scrollPane);
 		scrollPane.setViewportView(table);
 		
 		JButton btnNewButton = new JButton("Home");
@@ -65,13 +61,12 @@ public class LowList extends JFrame {
 				Options.main(null);
 			}
 		});
-		btnNewButton.setBounds(267, 337, 117, 29);
-		getContentPane().add(btnNewButton);
+		btnNewButton.setBounds(149, 235, 117, 29);
+		contentPane.add(btnNewButton);
 		
-		JLabel lblNewLabel = new JLabel("List of Low Quantity products");
-		lblNewLabel.setBounds(302, 6, 192, 23);
-		getContentPane().add(lblNewLabel);
-		this.setVisible(true);
+		JLabel lblNewLabel = new JLabel("List of Suppliers");
+		lblNewLabel.setBounds(149, 6, 130, 16);
+		contentPane.add(lblNewLabel);
 	}
 
 }
