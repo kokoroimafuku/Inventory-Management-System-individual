@@ -42,7 +42,11 @@ public class Options extends JFrame {
 		setJMenuBar(menuBar);
 		
 		JMenu mnNewMenu = new JMenu("Options");
+		JMenu mnNewMenu_1=new JMenu("Communications");
+		JMenu mnNewMenu_2=new JMenu("Reports");
 		menuBar.add(mnNewMenu);
+		menuBar.add(mnNewMenu_2);
+		menuBar.add(mnNewMenu_1);
 		mnNewMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					Add.main(null);
@@ -146,6 +150,30 @@ public class Options extends JFrame {
 		});
 		mnNewMenu.add(mntmNewMenuItem_5);
 		
+		JMenuItem mntmNewMenuItem_12 = new JMenuItem("Send alert");
+		mntmNewMenuItem_12.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					//System.exit(ABORT);
+			}
+		});
+		mnNewMenu_1.add(mntmNewMenuItem_12);
+		
+	
+		JMenuItem mntmNewMenuItem_13= new JMenuItem("Send Order");
+		mntmNewMenuItem_13.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					//System.exit(ABORT);
+			}
+		});
+		mnNewMenu_1.add(mntmNewMenuItem_13);
+		
+		JMenuItem mntmNewMenuItem_14= new JMenuItem("Generate report");
+		mntmNewMenuItem_14.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					//System.exit(ABORT);
+			}
+		});
+		mnNewMenu_1.add(mntmNewMenuItem_14);
 	}
 	
 	

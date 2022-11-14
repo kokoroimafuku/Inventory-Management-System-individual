@@ -4,6 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.prefs.Preferences;
 
+import org.apache.commons.mail.Email;
+import org.apache.commons.mail.SimpleEmail;
+
 public class db {
     private Connection con;
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");	
@@ -154,6 +157,7 @@ public class db {
 			pstmt.setString(1,userName);
 			pstmt.executeUpdate();
 			pstmt.close();
+			
 		}
 		catch(Exception e){
 			System.out.println(e);
@@ -316,7 +320,74 @@ public class db {
 		return data;
 
 	}
+	
+	public String lowInventoryMessage(){
+		StringBuilder products = new StringBuilder();
+		try{
+			String sql="SELECT * FROM product WHERE quantity<100";
+			Statement stmt= con.createStatement();
+			ResultSet rst = stmt.executeQuery(sql);
+			System.out.println("Product Name,	Expiry Date,	Quantity,	Value");
+			while(rst.next()){
+				products.append(rst.getString("productName")+",	"+rst.getDate("expiryDate")+",	"+rst.getInt("quantity")+",	"+rst.getDouble("productValue")+"\n");
+			}
+				
+			stmt.close();
 			
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
+		return products.toString();
+
+	}
+	
+	
+	public void sendAlert(String username) {
+		String sql="SELECT email FROM user WHERE username=?";
+		String userEmail;
+		try {
+			PreparedStatement pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, username);
+			ResultSet rst=pstmt.executeQuery();
+			rst.next();
+			userEmail=rst.getString("email");
+			Email email= new SimpleEmail();
+			
+			// Set the Authenticator to the default when authentication is requested from the mail server.
+			//**Not sure if needed so commented out
+				//email.setAuthenticator(new DefaultAuthenticator("team22", "310pw"));
+				
+			// Set whether SSL/TLS encryption should be enabled for the SMTP transport upon connection (SMTPS/POPS).
+			//**Not sure if needed so commented out
+				email.setSSLOnConnect(true);
+
+			// Set the hostname of the outgoing mail server 
+				email.setHostName("smtp.googlemail.com");
+
+			// Set the non-SSL port number of the outgoing mail server
+				email.setSmtpPort(3307);
+
+			// Set FROM field of email
+				email.setFrom(userEmail);
+				
+			// Set email subject
+				email.setSubject("Low Inventory Warning");
+
+			// Set the content of the email
+				email.setMsg(lowInventoryMessage());
+
+			// Set TO field/recipient of the email
+				email.addTo(userEmail);
+				
+			// Set condition to send alert
+		}
+		
+		catch(Exception e) {
+			System.out.println(e);
+		}
+		
+	}	
 
 
 }
