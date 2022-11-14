@@ -140,11 +140,5 @@ public class Add extends JFrame {
 		btnNewButton_1.setBounds(244, 199, 117, 29);
 		contentPane.add(btnNewButton_1);
 		
-		textField = new JTextField();
-		textField.setBounds(314, 52, 130, 26);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		textField.setText(q);
-		
 	}
 }

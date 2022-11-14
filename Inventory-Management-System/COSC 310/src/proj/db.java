@@ -1,9 +1,16 @@
 package proj;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.prefs.Preferences;
 
+import javax.swing.JOptionPane;
+
+import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.Email;
 import org.apache.commons.mail.SimpleEmail;
 
@@ -324,12 +331,12 @@ public class db {
 	public String lowInventoryMessage(){
 		StringBuilder products = new StringBuilder();
 		try{
-			String sql="SELECT * FROM product WHERE quantity<100";
+			String sql="SELECT productName FROM product WHERE quantity<100";
 			Statement stmt= con.createStatement();
 			ResultSet rst = stmt.executeQuery(sql);
-			System.out.println("Product Name,	Expiry Date,	Quantity,	Value");
+			products.append("LOW INVENTORY PRODUCTS!!!"+"\n");
 			while(rst.next()){
-				products.append(rst.getString("productName")+",	"+rst.getDate("expiryDate")+",	"+rst.getInt("quantity")+",	"+rst.getDouble("productValue")+"\n");
+				products.append(rst.getString("productName")+"stock is running low. More should be ordered."+"\n");
 			}
 				
 			stmt.close();
@@ -354,19 +361,21 @@ public class db {
 			userEmail=rst.getString("email");
 			Email email= new SimpleEmail();
 			
+			// Set the hostname of the outgoing mail server 
+				email.setHostName("smtp.googlemail.com");
+			
+			
+			// Set the non-SSL port number of the outgoing mail server
+			email.setSmtpPort(465);
 			// Set the Authenticator to the default when authentication is requested from the mail server.
 			//**Not sure if needed so commented out
-				//email.setAuthenticator(new DefaultAuthenticator("team22", "310pw"));
+			email.setAuthenticator(new DefaultAuthenticator(userEmail, "kumberel16"));
 				
 			// Set whether SSL/TLS encryption should be enabled for the SMTP transport upon connection (SMTPS/POPS).
 			//**Not sure if needed so commented out
 				email.setSSLOnConnect(true);
 
-			// Set the hostname of the outgoing mail server 
-				email.setHostName("smtp.googlemail.com");
 
-			// Set the non-SSL port number of the outgoing mail server
-				email.setSmtpPort(3307);
 
 			// Set FROM field of email
 				email.setFrom(userEmail);
@@ -381,6 +390,14 @@ public class db {
 				email.addTo(userEmail);
 				
 			// Set condition to send alert
+			if(lowInventoryMessage().equals("")){
+				
+				JOptionPane.showMessageDialog(null, "No product is low for an alert");
+			}
+			else{
+				email.send();
+				
+			}
 		}
 		
 		catch(Exception e) {
@@ -388,6 +405,97 @@ public class db {
 		}
 		
 	}	
+	public void addTransaction(Transaction t) {
+
+		try{
+			String sql = "INSERT INTO Transaction VALUES (?,?,?)";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,t.getName());
+			pstmt.setDate(2,new Date(sdf.parse(t.getDate()).getTime()));
+			pstmt.setInt(3,t.getQuant());
+			pstmt.executeUpdate();
+			pstmt.close();
+
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
+
+	}
+	public void deleteTransaction(String product,String transDate,int quantity){
+		String sql = "DELETE FROM Transaction WHERE product=? AND transDate=? AND transQuantity=?";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, product);
+			pstmt.setDate(2, new Date(sdf.parse(transDate).getTime()));
+			pstmt.setInt(1, quantity);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	public Object[][] listOfTransactions(){
+
+		Object[][] data= new Object[1000][3];
+		try{
+			String sql="SELECT * FROM Transaction";
+			Statement stmt= con.createStatement();
+			ResultSet rst = stmt.executeQuery(sql);
+			int count=0;
+			while(rst.next()){
+				data[count][0]=rst.getString("product");
+				data[count][1]=rst.getString("transDate");
+				data[count][2]=rst.getString("transQuantity");
+				count++;
+			}
+				
+			stmt.close();
+			
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
+		return data;
+
+	}
+
+	public double calTime(String productName, String startDate, String endDate) {
+
+		List<Transaction> transactionList = new ArrayList<Transaction>();
+		try{
+			String sql="SELECT * FROM Transaction WHERE productName=? AND transDate BETWEEN ? and ?";
+			PreparedStatement pstmt= con.prepareStatement(sql);
+			ResultSet rst = pstmt.executeQuery(sql);
+			while(rst.next()){
+				pstmt.setString(1,productName);
+				pstmt.setString(2,startDate);
+				pstmt.setString(3,endDate);
+				
+				String name = rst.getString("product");
+				String date = rst.getDate("transDate").toString();
+				int quantity = rst.getInt("transQuantity");
+				transactionList.add(new Transaction(name, date, quantity));
+			}
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MM yyyy");
+			LocalDate date1 = LocalDate.parse(startDate, dtf);
+    		LocalDate date2 = LocalDate.parse(endDate, dtf);
+    		//long numDays = Duration.between(date1, date2).toDays();
+			
+			double totalQuant = 0;
+			for (Transaction t : transactionList) { 
+    			totalQuant = totalQuant + t.getQuant();
+			}
+				
+			pstmt.close();
+			
+			double rate = totalQuant/10;
+			return rate;
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
+		return 0;
+
+	}
 
 
 }
