@@ -15,9 +15,9 @@ The user can select specific inventory to generate an order to send out to produ
 5. Modify the quantity of products in the inventory
 6. Print the products that are running low
 
-#WHAT WE HAVE DONE THIS ITERATION
+# WHAT WE HAVE DONE THIS ITERATION
 1. We migrated from the fileserver system to mySQL(Library) database to store the products
-2. In addition to the previous classes, we added two classes: Supplier class and User class
+2. In addition to the previous classes, we added two classes: Supplier class, User class and supply class
 3.We used the commons apache email library to send alerts to Users about products that are low in inventory
 4.We used the java preferences library to store the database connection credentials
 5.We created a graphical user interface using java swing library
