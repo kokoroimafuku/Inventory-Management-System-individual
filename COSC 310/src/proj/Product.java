@@ -1,19 +1,14 @@
 package proj;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Scanner;
 //import currentDateTime checker to check if holidays are coming up
 public class Product implements Serializable{
 	 private static final long serialVersionUID = 1L;
 	String name;
-	 String expDate; //Changed date to string value,later improve with string patterns to check correct dates
+	String expDate; //Changed date to string value,later improve with string patterns to check correct dates
 	 int quant;
 	 double value;
-	 boolean low;
 
-	/*static ArrayList<String> inv = new ArrayList<>();
-	static ArrayList<String> inv1 = new ArrayList<>();*/
 	Product(String name, String expDate, int quant, double value) {
 		this.name = name;
 		this.expDate = expDate;
