@@ -8,12 +8,6 @@ public class test {
 		Scanner sc = new Scanner(System.in);
 		db app = new db();//creates an object of the db class so we can utilise its functions
 		app.connect();//Creates a connection to the database
-		Object[][] test= app.listProducts();
-		for(int i=0;i<test.length;i++){
-			for(int j=0;j<test[1].length;j++)
-				System.out.print(test[i][j]+" ");
-			System.out.println();
-		}
 		boolean end=false;
 		while(!end){
 			System.out.println("Would you like to add a Product? (1)");
