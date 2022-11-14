@@ -75,7 +75,12 @@ Open VS code and create a connection to the database using the username and pass
 <img width="808" alt="Screen Shot 2022-11-13 at 6 19 14 PM" src="https://user-images.githubusercontent.com/84111301/201563850-83a14247-5e3a-4c3e-8a3d-25b93d93ed34.png">
 <img width="796" alt="Screen Shot 2022-11-13 at 6 25 11 PM" src="https://user-images.githubusercontent.com/84111301/201563875-c9d01c71-b2cf-4a34-aec3-6bc99b6d4e90.png">
 
-5. We used the java time library to calculate the rate at which products are moving. This helps determine which stocks are moving fast and recalibrate what we will order next time
+5. We used the java time library to calculate the rate at which products are moving per day. This helps determine which stocks are moving fast and recalibrate what we will order next time.
+ 
+ <img width="464" alt="Screen Shot 2022-11-13 at 8 31 29 PM" src="https://user-images.githubusercontent.com/84111301/201575988-42670947-a3b3-4fa2-9116-b635def5eeeb.png">
+
+<img width="449" alt="Screen Shot 2022-11-13 at 8 30 04 PM" src="https://user-images.githubusercontent.com/84111301/201575948-19b1fd32-6fd0-4b27-9389-7287c044417e.png">
+<img width="504" alt="Screen Shot 2022-11-13 at 8 30 43 PM" src="https://user-images.githubusercontent.com/84111301/201575979-3fe72e79-7560-4427-8773-5da7e36524d2.png">
 
 
 6.We also created reports. This will enable us to present/show what we have . It also clearly shows results of queries
