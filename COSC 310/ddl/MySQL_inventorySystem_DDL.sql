@@ -28,6 +28,13 @@ CREATE TABLE supplier (
 
  CREATE TABLE user(
     username varchar(50) NOT NULL,
+    email varchar(50),
     userPassword VARCHAR(50)
  ) ENGINE = InnoDB;
+
+  CREATE TABLE Transaction(
+    product varchar(50),
+    transDate DATE,
+    transQuantity INT,
+    CONSTRAINT FK_sup_prod FOREIGN KEY (product) REFERENCES product (productName) ON DELETE SET NULL) ENGINE = InnoDB;
 
