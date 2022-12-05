@@ -14,11 +14,11 @@ The user can select specific inventory to generate an order to send out to produ
 # WHAT THE TEAM DID LAST TIME
 1. We migrated from the fileserver system to mySQL(Library) database to store the products
 2. In addition to the previous classes, we added two classes: Supplier class, User class and supply class
-3.We used the commons apache email library to send alerts to Users about products that are low in inventory
-4.We used the java preferences library to store the database connection credentials
-5.We created a graphical user interface using java swing library
+3. We used the commons apache email library to send alerts to Users about products that are low in inventory
+4. We used the java preferences library to store the database connection credentials
+5. We created a graphical user interface using java swing library
 6. We used the java time library to calculate the rate at which products are moving. This helps determine which stocks are moving fast and recalibrate what we will order next time
-7.We also generated reports for specific queries which we can send to vendors if need be
+7. We also generated reports for specific queries which we can send to vendors if need be
 
 # WHAT I HAVE DONE THIS ITERATION
 1. I have implemented 2 public apis to allow the system to:
