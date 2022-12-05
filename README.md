@@ -7,15 +7,7 @@ This allows the system to send alerts to warn of low inventory or reminders to p
 Alerts can also be generated to warn of vendor changes such as price changes or new products added. 
 The user can select specific inventory to generate an order to send out to product vendors and they can also generate reports with any pertinent information that the system stores about the inventory.
 
-# WHAT WE DID LAST TIME
-1. Creates a product
-2. Stores the product on a file 
-3. Loads the file with the product everytime the program is run
-4. Print the products that are currently in the invenotry
-5. Modify the quantity of products in the inventory
-6. Print the products that are running low
-
-# WHAT WE HAVE DONE THIS ITERATION
+# WHAT THE TEAM DID LAST TIME
 1. We migrated from the fileserver system to mySQL(Library) database to store the products
 2. In addition to the previous classes, we added two classes: Supplier class, User class and supply class
 3.We used the commons apache email library to send alerts to Users about products that are low in inventory
@@ -23,6 +15,17 @@ The user can select specific inventory to generate an order to send out to produ
 5.We created a graphical user interface using java swing library
 6. We used the java time library to calculate the rate at which products are moving. This helps determine which stocks are moving fast and recalibrate what we will order next time
 7.We also generated reports for specific queries which we can send to vendors if need be
+
+# WHAT I HAVE DONE THIS ITERATION
+1. I have implemented 2 public apis to allow the system to:
+    - translate the low products list into any language the user chooses 
+    - Produce a pdf that includes the product list
+2. To implenment the above, I have added a method on db that returns String of the list of products in the system
+3. I have also added 3 methods on lowlist 
+    - translate() that returns string of the translated word
+    - trans() that opens a new window so the user can enter the language to be translated to
+    - set() that opens another window with the translated product list 
+4. I have also added a report() method on Look.java so it produces a pdf. 
 
 # Setting up the database
 1. Download docker desktop
