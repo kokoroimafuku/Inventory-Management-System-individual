@@ -7,6 +7,10 @@ This allows the system to send alerts to warn of low inventory or reminders to p
 Alerts can also be generated to warn of vendor changes such as price changes or new products added. 
 The user can select specific inventory to generate an order to send out to product vendors and they can also generate reports with any pertinent information that the system stores about the inventory.
 
+# LIST OF API FOR THE INDIVIDUAL PROJECT
+1. I have implemented the google translate api using the google apps script so the translate method translates the keywords of the low products list page and returns a string of translated keywords. 
+2. I have also implemented the iTextpdf api library so the report method produces a pdf with the list of products at a designated directory. 
+
 # WHAT THE TEAM DID LAST TIME
 1. We migrated from the fileserver system to mySQL(Library) database to store the products
 2. In addition to the previous classes, we added two classes: Supplier class, User class and supply class
