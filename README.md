@@ -54,9 +54,7 @@ Open VS code and create a connection to the database using the username and pass
 
 # README 2
 1. We migrated from the fileserver system to mySQL(Library) database to store the products.This enhanced the security of our data since a user will require credentials to access it. MySql also reduced chances of duplicate records via keys. Also it made it easier for us to query the data using sql
-https://github.com/kokoroimafuku/Inventory-Management-System-individual/blob/6abc13958c59f0c3cbbd189d23efdcd22c224b08/Screen%20Shot%202022-12-05%20at%203.37.25%20PM.png
-
-<img width="1200" alt="Screen Shot 2022-11-13 at 6 31 18 PM" src="https://user-images.githubusercontent.com/84111301/201563372-a41b936a-6981-4dc0-a571-04d81f503bf5.png">
+<img width="1200" alt="Screen Shot 2022-11-13 at 6 31 18 PM" src="[https://user-images.githubusercontent.com/84111301/201563372-a41b936a-6981-4dc0-a571-04d81f503bf5.png](https://github.com/kokoroimafuku/Inventory-Management-System-individual/blob/6abc13958c59f0c3cbbd189d23efdcd22c224b08/Screen%20Shot%202022-12-05%20at%203.37.25%20PM.png)">
 
 <img width="1243" alt="Screen Shot 2022-11-13 at 6 32 19 PM" src="https://user-images.githubusercontent.com/84111301/201563379-88218ae8-2caf-4197-ba05-fab0f5d34ce3.png"><img width="1501" alt="Screen Shot 2022-11-13 at 6 33 53 PM" src="https://user-images.githubusercontent.com/84111301/201563390-273d248d-6649-4582-b1f2-a39ffd9c46bf.png">
 <img width="1512" alt="Screen Shot 2022-11-13 at 6 34 39 PM" src="https://user-images.githubusercontent.com/84111301/201563399-0a8b710c-6aef-466d-ac36-2f834cdc4819.png">
