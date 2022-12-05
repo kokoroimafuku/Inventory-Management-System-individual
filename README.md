@@ -54,7 +54,7 @@ Open VS code and create a connection to the database using the username and pass
 
 # README 2
 1. We migrated from the fileserver system to mySQL(Library) database to store the products.This enhanced the security of our data since a user will require credentials to access it. MySql also reduced chances of duplicate records via keys. Also it made it easier for us to query the data using sql
-<img width="1146" alt="Screen Shot 2022-11-13 at 6 30 34 PM" src="https://user-images.githubusercontent.com/84111301/201563347-ff197ba5-21c5-40ac-9a89-0a5023612ac1.png">
+https://github.com/kokoroimafuku/Inventory-Management-System-individual/blob/6abc13958c59f0c3cbbd189d23efdcd22c224b08/Screen%20Shot%202022-12-05%20at%203.37.25%20PM.png
 
 <img width="1200" alt="Screen Shot 2022-11-13 at 6 31 18 PM" src="https://user-images.githubusercontent.com/84111301/201563372-a41b936a-6981-4dc0-a571-04d81f503bf5.png">
 
