@@ -61,6 +61,16 @@ public class Look extends JFrame {
 			}
 		});
 
+		try {
+			Document document = new Document();
+			PdfWriter.getInstance(document, new FileOutputStream(FILE));
+			document.open();
+			report(document);
+			document.close();
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+
 	}
 
 	/**
@@ -94,15 +104,6 @@ public class Look extends JFrame {
 		JButton btnNewButton2 = new JButton("Produce Report");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-				Document document = new Document();
-				PdfWriter.getInstance(document, new FileOutputStream(FILE));
-				document.open();
-				report(document);
-				document.close();
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
 			}
 		});
 		btnNewButton2.setBounds(250, 235, 130, 29);
