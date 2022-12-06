@@ -1,0 +1,13 @@
+{
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "maven.view": "hierarchical",
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar"
+        ],
+        "exclude": [
+            "/Inventory-Management-System/lib/itextpdf-5.5.9.jar"
+        ]
+    }
+}
