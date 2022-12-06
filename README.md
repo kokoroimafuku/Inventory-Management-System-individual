@@ -63,5 +63,11 @@ Open VS code and create a connection to the database using the username and pass
 3.When return in pressed, the page will be translated .
 <img width="1200" alt="Screen Shot" src="https://github.com/kokoroimafuku/Inventory-Management-System-individual/blob/b4432b06e958aade537a0c0b02c5956d98ead9ad/Screen%20Shot%202022-12-05%20at%203.38.03%20PM.png">
 
+4. I have added a Produce Report button on the List page
+<img width="1200" alt="Screen Shot" src="https://github.com/kokoroimafuku/Inventory-Management-System-individual/blob/04898b366c00512dafb9aea4b38cd464f1f8d00a/Screen%20Shot%202022-12-05%20at%204.02.06%20PM.png">
 
+5. When the produce report button is pressed, a pdf document is created in the designated place with the list of products in the inventory 
+<img width="1200" alt="Screen Shot" src="https://github.com/kokoroimafuku/Inventory-Management-System-individual/blob/04898b366c00512dafb9aea4b38cd464f1f8d00a/Screen%20Shot%202022-12-05%20at%204.02.40%20PM.png">
+<img width="1200" alt="Screen Shot" src="https://github.com/kokoroimafuku/Inventory-Management-System-individual/blob/04898b366c00512dafb9aea4b38cd464f1f8d00a/Screen%20Shot%202022-12-05%20at%204.13.26%20PM.png">
+<img width="1200" alt="Screen Shot" src="https://github.com/kokoroimafuku/Inventory-Management-System-individual/blob/04898b366c00512dafb9aea4b38cd464f1f8d00a/Screen%20Shot%202022-12-05%20at%204.13.34%20PM.png">
 
